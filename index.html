@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevate Basketball — Court IQ. Classroom IQ.</title>
+  <meta name="description" content="Basketball coaching for young athletes in Portland, OR. Private and group sessions with Coach Liam Mishcon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">ELEVATE</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Training</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact" class="nav-cta">Book a Session</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Elevate<br>Basketball</h1>
+      <p class="hero-tagline">Court IQ. Classroom IQ.</p>
+      <a href="#contact" class="btn btn-primary">Book a Session</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="images/liam-3.jpeg" alt="Coach Liam in defensive stance" loading="lazy">
+        </div>
+        <div class="about-text">
+          <h2 class="section-label">Meet Your Coach</h2>
+          <h3 class="section-title">Liam Mishcon</h3>
+          <p>Varsity player at Wells High School. AAU competitor with Carr Sports Academy. And the coach your kid actually wants to work with.</p>
+          <p>Liam trains elementary and middle school players — not just on skills, but on <strong>how to think on the court</strong>. He gets how young athletes learn, especially the ones who need a different approach. Patient where it counts, intense when it matters.</p>
+          <p>He doesn't just teach basketball. He builds smarter players.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="section section-dark" id="skills">
+    <div class="container">
+      <h2 class="section-label center">What You'll Learn</h2>
+      <h3 class="section-title center">Real Skills. Real Game.</h3>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🏀</div>
+          <h4>Ball Handling</h4>
+          <p>Tight handles, both hands, under pressure. The foundation of everything.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">👁️</div>
+          <h4>Court Vision</h4>
+          <p>See the floor before the play develops. Find the open man. Read the defense.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🧠</div>
+          <h4>Decision Making</h4>
+          <p>When to drive, when to dish, when to pull up. Make the right play, fast.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🛡️</div>
+          <h4>Defensive Fundamentals</h4>
+          <p>Footwork, positioning, and the mentality to lock up your assignment.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">💪</div>
+          <h4>Confidence Building</h4>
+          <p>Play without hesitation. Trust your work. Step up in big moments.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📋</div>
+          <h4>Game IQ</h4>
+          <p>Understand the why behind every play. Think two steps ahead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 class="section-label center">Gallery</h2>
+      <h3 class="section-title center">On the Court</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-wide">
+          <img src="images/liam-4.jpeg" alt="Liam driving to the basket" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="images/liam-1.jpeg" alt="Liam shooting a jump shot" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="images/liam-2.jpeg" alt="Liam at AAU tournament" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="images/liam-3.jpeg" alt="Liam playing defense" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="images/coaching-kids.png" alt="Coaching young players" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="images/basketball-drills.png" alt="Basketball training equipment" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="images/youth-basketball.png" alt="Youth player on outdoor court" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section-dark" id="pricing">
+    <div class="container">
+      <h2 class="section-label center">Pricing</h2>
+      <h3 class="section-title center">Invest in Your Game</h3>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-badge">Most Popular</div>
+          <h4>Private 1:1</h4>
+          <div class="pricing-amount">$30<span>/hour</span></div>
+          <ul>
+            <li>Personalized skill assessment</li>
+            <li>Custom training plan</li>
+            <li>One-on-one attention</li>
+            <li>Flexible scheduling</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Book Now</a>
+        </div>
+        <div class="pricing-card">
+          <h4>Group Sessions</h4>
+          <div class="pricing-amount">Custom<span> rates</span></div>
+          <ul>
+            <li>Small group training</li>
+            <li>Team skill development</li>
+            <li>Competitive drills</li>
+            <li>Perfect for teammates</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Contact for Rates</a>
+        </div>
+      </div>
+      <p class="pricing-note">Every kid deserves great coaching.<br>Scholarships available for families who need them.</p>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="section" id="location">
+    <div class="container">
+      <div class="location-content">
+        <div class="location-icon">📍</div>
+        <h2 class="section-title">Portland, OR</h2>
+        <p class="location-detail">Local courts &amp; MJCC</p>
+        <p class="location-sub">Mittleman Jewish Community Center &amp; Portland-area gyms</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-dark" id="contact">
+    <div class="container">
+      <div class="contact-content">
+        <h2 class="section-label center">Let's Go</h2>
+        <h3 class="section-title center">Ready to Elevate Your Game?</h3>
+        <div class="contact-cta">
+          <a href="sms:3059039200" class="btn btn-big">Text 305-903-9200</a>
+          <p class="contact-or">or send a message below</p>
+        </div>
+        <form class="contact-form" action="https://formsubmit.co/adam@mish.com" method="POST">
+          <input type="hidden" name="_subject" value="Elevate Basketball — New Inquiry">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <input type="text" name="phone" placeholder="Phone Number">
+          <textarea name="message" placeholder="Tell us about your player — age, experience, goals..." rows="4"></textarea>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Elevate Basketball. Portland, OR.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.querySelector('.nav-links').classList.remove('open');
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.skill-card, .pricing-card, .gallery-item, .about-text, .about-image').forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
