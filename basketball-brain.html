@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Basketball Brain — Elevate Basketball</title>
+  <meta name="description" content="Why basketball builds smarter, more confident, more resilient young people. The science behind the game.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏀</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .article-hero {
+      padding: 160px 0 80px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      text-align: center;
+    }
+    .article-hero .section-label { color: #f97316; }
+    .article-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .article-hero .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .article-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+    .article-body h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 3rem 0 1rem;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #f97316;
+      margin: 2.5rem 0 0.75rem;
+    }
+    .article-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.25rem;
+    }
+    .article-body .lead {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      border-left: 3px solid #f97316;
+      padding-left: 1.25rem;
+      margin: 2rem 0;
+    }
+    .article-body blockquote {
+      background: rgba(249, 115, 22, 0.08);
+      border-left: 4px solid #f97316;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .article-body blockquote p {
+      color: #f97316;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+    .five-skills {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .five-skills .skill-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .five-skills .skill-num {
+      background: #f97316;
+      color: #000;
+      font-weight: 800;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .five-skills .skill-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .five-skills .skill-item p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+    .persona-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 600px) {
+      .persona-grid { grid-template-columns: 1fr; }
+    }
+    .persona-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .persona-card .emoji { font-size: 2rem; margin-bottom: 0.75rem; }
+    .persona-card h4 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .persona-card .aka {
+      font-size: 0.85rem;
+      color: #f97316;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .persona-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #f97316;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .article-cta {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: rgba(249, 115, 22, 0.06);
+      border-radius: 16px;
+      margin-top: 3rem;
+    }
+    .article-cta h3 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .article-cta p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">ELEVATE</a>
+      <div class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Training</a>
+        <a href="basketball-brain.html" class="active">The Basketball Brain</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#contact" class="nav-cta">Book a Session</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="article-hero">
+    <div class="container">
+      <p class="section-label">Why Basketball?</p>
+      <h1>The Basketball Brain</h1>
+      <p class="subtitle">Why the court might be the most important classroom your kid ever walks into.</p>
+    </div>
+  </section>
+
+  <!-- Article -->
+  <div class="article-body">
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <p class="lead">I'm going to be real with you. When most parents think about basketball, they think about exercise, teamwork, maybe a college scholarship if things go really well. But there's something way bigger happening on the court — and science is starting to prove it.</p>
+
+    <h2>Your Kid's Brain Is Under Construction. Basketball Is the Blueprint.</h2>
+
+    <p>Between ages 11 and 16, your kid's brain is going through something massive. The prefrontal cortex — that's the part that handles judgment, impulse control, long-term thinking, and reading other people — is in a state of <strong>maximum neuroplasticity</strong>. Basically, it's rewiring itself, and whatever your kid practices during this window doesn't just become a skill. It becomes how they think. How they operate. Who they are.</p>
+
+    <p>Here's the thing: basketball asks young players to do five incredibly complex things <strong>at the exact same time</strong>. No other team sport does this.</p>
+
+    <div class="five-skills">
+      <div class="skill-item">
+        <div class="skill-num">1</div>
+        <div>
+          <h4>Social Reasoning</h4>
+          <p>Knowing where all nine other players are on the court — and where they're about to be. That's spatial awareness, prediction, and empathy all firing at once.</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-num">2</div>
+        <div>
+          <h4>Emotional Regulation Under Pressure</h4>
+          <p>Down 5 with two minutes left. Ref makes a bad call. Crowd's loud. Your kid has to manage all of that and still execute. That's emotional control you can't teach from a textbook.</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-num">3</div>
+        <div>
+          <h4>Social Hierarchy Navigation</h4>
+          <p>Who earns the ball? Who earns the right to take the big shot? Kids learn to read social dynamics in real time — when to lead, when to defer, when to step up.</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-num">4</div>
+        <div>
+          <h4>Identity Performance</h4>
+          <p>How do you carry yourself after a turnover? After you get blocked? After you miss the game-winner? Basketball teaches kids that how you respond says more about you than the mistake itself.</p>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-num">5</div>
+        <div>
+          <h4>Micro-Decision Making</h4>
+          <p>Players make decisions every 200 milliseconds on the court. Drive or dish? Shoot or pass? Help or stay? That speed of thinking carries into everything else in life.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Here's what's wild: corporate training programs, therapy, leadership courses — they're all trying to teach these exact skills to adults in their 30s and 40s. Your kid is learning them now, on the court, without even knowing it.</p>
+
+    <blockquote>
+      <p>"The basketball court is the most honest, most immediate, most beautifully designed laboratory in which a young person can build these cognitive skills."</p>
+    </blockquote>
+
+    <h2>The Real Lesson Is Passing</h2>
+
+    <p>Think about your kid's world for a second. Social media, grades, college apps — everything rewards the individual. The person who scores, who posts the result, who gets the likes. It's all about <em>me</em>.</p>
+
+    <p>Basketball flips that completely.</p>
+
+    <p>When your kid delivers a perfect pass to a cutting teammate and they score, something powerful happens. Your kid might not get the highlight or the stat line, but internally? They feel something deeper than personal glory. They set someone else up to succeed. And that hit different.</p>
+
+    <blockquote>
+      <p>"What this trains is an understanding that influence is more powerful than performance."</p>
+    </blockquote>
+
+    <p>That lesson — that making other people better creates more lasting satisfaction than doing it all yourself — is what builds great teammates, great partners, great leaders, and great people. And the basketball court teaches it naturally, every single game.</p>
+
+    <h2>Style Isn't Vanity. It's Character.</h2>
+
+    <p>Here's something most people miss about basketball: it's one of the only team sports where <em>how you play</em> matters as much as <em>how well you play</em>.</p>
+
+    <p>Players are described as "smooth," "crafty," "fearless," "cerebral." Those aren't physical descriptions — they're character assessments delivered through a physical language. The way your kid moves on the court is an expression of who they are.</p>
+
+    <p>What this teaches young people is huge: <strong>how you do something carries meaning beyond whether you do it</strong>. Presence, poise, and expression aren't showing off — they're communication. Kids who internalize this carry themselves differently in job interviews, in difficult conversations, in rooms where it matters.</p>
+
+    <p>Their body language speaks before their words do. And they learned that on a basketball court.</p>
+
+    <h2>Two Types of Players. Two Types of Genius.</h2>
+
+    <p>If you've watched enough youth basketball, you've seen both of these players. And both are developing something incredible.</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="emoji">🗣️</div>
+        <h4>The Architect</h4>
+        <div class="aka">The Talker</div>
+        <p>Constant chatter. "I got ball!" "Help left!" "Screen coming!" It might seem like they're just loud, but research shows they're doing something sophisticated — they're <strong>narrating themselves into competence</strong>.</p>
+        <p>The talking keeps their brain engaged when the game gets fast and chaotic. It's the same technique high-performing surgical teams use to reduce errors. And by verbalizing everything, they make the whole team smarter in real time.</p>
+      </div>
+      <div class="persona-card">
+        <div class="emoji">🤫</div>
+        <h4>The Island</h4>
+        <div class="aka">The Silent One</div>
+        <p>Says nothing. Eyes forward, expression unreadable. Miss a shot? No reaction. Big play? Same face. They still feel everything — but they've achieved something remarkable: a <strong>complete separation of feelings from performance</strong>.</p>
+        <p>Their silence is a weapon. They can't be rattled. Trash talk doesn't reach them. In high-pressure moments, that internal stability is an enormous advantage.</p>
+      </div>
+    </div>
+
+    <p>Neither style is better. Both are developing real psychological tools that will serve them for the rest of their lives. The Architect learns to lead through communication. The Island learns to perform through composure. Both are being shaped by the court.</p>
+
+    <h2>So Why Basketball?</h2>
+
+    <p>Because it's not just a sport. It's where your kid learns to think under pressure, read people, control their emotions, carry themselves with confidence, make other people better, and make split-second decisions that matter.</p>
+
+    <p>Those aren't basketball skills. Those are life skills. And the court is the best place to build them.</p>
+
+    <div class="article-cta">
+      <h3>Ready to build a smarter player?</h3>
+      <p>Every session at Elevate isn't just about handles and jump shots — it's about developing the complete player.</p>
+      <a href="index.html#contact" class="btn btn-primary">Book a Session</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Elevate Basketball. Portland, OR.</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+
+</body>
+</html>
