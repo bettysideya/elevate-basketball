@@ -263,3 +263,63 @@ body {
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-wide { grid-column: span 1; }
 }
+
+/* === Brain Card === */
+.brain-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+.brain-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(245, 158, 11, 0.15);
+}
+.brain-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+.brain-content {
+  flex: 1;
+}
+.brain-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.brain-text {
+  color: var(--gray);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.brain-link {
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.brain-card:hover .brain-link {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .brain-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+  }
+  .brain-icon {
+    font-size: 40px;
+  }
+  .brain-title {
+    font-size: 1.2rem;
+  }
+}
