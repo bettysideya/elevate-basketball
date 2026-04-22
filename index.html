@@ -11,6 +11,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏀</text></svg>">
   <link rel="stylesheet" href="styles.css">
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="tracking.js"></script>
 </head>
 <body>
 
@@ -192,7 +193,7 @@
           <a href="sms:3059039200" class="btn btn-big">Text 305-903-9200</a>
           <p class="contact-or">or send a message below</p>
         </div>
-        <form class="contact-form" action="https://formsubmit.co/adam@mish.com" method="POST">
+        <form class="contact-form" action="https://formsubmit.co/adam@mish.com" method="POST" onsubmit="trackConversion('contact_form', {page: 'home'});">
           <input type="hidden" name="_subject" value="Elevate Basketball — New Inquiry">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://elevate-bb.com/thanks.html">
