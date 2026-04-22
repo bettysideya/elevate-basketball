@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample Lesson — Elevate Basketball</title>
-  <meta name="description" content="See what a real Elevate Basketball session looks like. Beginner and intermediate sample lessons for young players.">
+  <title>Sample Sessions — Elevate Basketball</title>
+  <meta name="description" content="See what a typical training session looks like with Coach Liam. Beginner and intermediate breakdowns.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,226 +13,179 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="tracking.js"></script>
   <style>
-    .article-hero {
-      padding: 160px 0 80px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    .session-hero {
+      padding: 140px 0 80px;
       text-align: center;
+      background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
     }
-    .article-hero .section-label { color: #f97316; }
-    .article-hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 1rem;
+    .session-hero .section-label {
+      color: var(--orange);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
     }
-    .article-hero .subtitle {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.7);
+    .session-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .session-hero .subtitle {
+      color: var(--gray);
+      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto;
     }
-    .article-body {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 60px 20px 80px;
-    }
-    .article-body p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 1.25rem;
-    }
-    .article-body .lead {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.9);
-      font-weight: 500;
-      border-left: 3px solid #f97316;
-      padding-left: 1.25rem;
-      margin: 2rem 0;
-    }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #f97316;
-      font-weight: 600;
-      text-decoration: none;
-      margin-bottom: 2rem;
-    }
-    .back-link:hover { text-decoration: underline; }
 
-    /* Lesson tabs */
-    .lesson-tabs {
-      display: flex;
-      gap: 0;
-      margin: 2rem 0 0;
-      border-bottom: 2px solid rgba(255,255,255,0.1);
+    .sessions-container {
+      padding: 80px 0;
     }
-    .lesson-tab {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      background: none;
-      border: none;
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
-      transition: all 0.2s;
+    .session-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-bottom: 48px;
     }
-    .lesson-tab:hover { color: rgba(255,255,255,0.8); }
-    .lesson-tab.active {
-      color: #f97316;
-      border-bottom-color: #f97316;
+    .session-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
     }
-    .lesson-tab .tag {
-      font-size: 0.7rem;
+    .session-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+    .session-card.beginner::before {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+    .session-card.intermediate::before {
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+    }
+
+    .session-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: rgba(249,115,22,0.15);
-      color: #f97316;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-left: 8px;
-      vertical-align: middle;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
     }
-    .lesson-content { display: none; padding-top: 2rem; }
-    .lesson-content.active { display: block; }
+    .beginner .session-badge {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+    }
+    .intermediate .session-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--orange);
+    }
 
-    /* Lesson blocks */
-    .lesson-block {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .lesson-block .block-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .lesson-block .block-time {
-      background: #f97316;
-      color: #000;
-      font-weight: 800;
-      font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-    .lesson-block h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #fff;
-      margin: 0;
-    }
-    .lesson-block h4 {
-      font-size: 1rem;
+    .session-card h2 {
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #f97316;
-      margin: 1.25rem 0 0.5rem;
+      margin-bottom: 8px;
     }
-    .lesson-block p {
+    .session-card .duration {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .session-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .timeline-time {
+      flex-shrink: 0;
+      width: 60px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray);
+      padding-top: 2px;
+    }
+    .timeline-content {
+      flex: 1;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .timeline-item:last-child .timeline-content {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .timeline-content h4 {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.7;
-      margin-bottom: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
-    .lesson-block ul {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0;
-    }
-    .lesson-block ul li {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      padding: 0.4rem 0 0.4rem 1.5rem;
-      position: relative;
+    .timeline-content p {
+      font-size: 0.85rem;
+      color: var(--gray);
       line-height: 1.5;
     }
-    .lesson-block ul li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: #f97316;
-      font-weight: 700;
+
+    .session-note {
+      background: var(--navy-mid);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin-top: 16px;
     }
-    .coach-note {
-      background: rgba(249,115,22,0.06);
-      border-left: 3px solid #f97316;
-      padding: 1rem 1.25rem;
-      border-radius: 0 8px 8px 0;
-      margin: 1rem 0;
-    }
-    .coach-note p {
+    .session-note p {
+      color: var(--gray);
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-      margin: 0;
-      font-style: italic;
+      margin-bottom: 16px;
     }
-    .coach-note strong { color: #f97316; }
-    .lesson-overview {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin: 1.5rem 0 2rem;
+    .session-note .btn {
+      display: inline-block;
     }
-    @media (max-width: 600px) {
-      .lesson-overview { grid-template-columns: 1fr; }
-      .lesson-tab { padding: 0.75rem 1rem; font-size: 0.9rem; }
+
+    .back-link {
+      display: inline-block;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+      transition: color 0.2s;
     }
-    .overview-item {
-      text-align: center;
-      padding: 1.25rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
+    .back-link:hover {
+      color: var(--orange);
     }
-    .overview-item .label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: rgba(255,255,255,0.4);
-      font-weight: 600;
-    }
-    .overview-item .value {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #fff;
-      margin-top: 0.25rem;
-    }
-    .article-cta {
-      text-align: center;
-      padding: 3rem 2rem;
-      background: rgba(249, 115, 22, 0.06);
-      border-radius: 16px;
-      margin-top: 3rem;
-    }
-    .article-cta h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 0.75rem;
-    }
-    .article-cta p {
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      .session-grid {
+        grid-template-columns: 1fr;
+      }
+      .session-card {
+        padding: 24px;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- Nav -->
-  <nav class="nav" id="nav">
+  <nav class="nav scrolled" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">ELEVATE</a>
       <div class="nav-links">
         <a href="index.html#about">About</a>
         <a href="index.html#skills">Training</a>
-        <a href="sample-lesson.html" class="active">Sample Lesson</a>
+        <a href="sample-session.html">Sample Session</a>
         <a href="basketball-brain.html">Basketball Brain</a>
         <a href="index.html#pricing">Pricing</a>
         <a href="index.html#contact" class="nav-cta">Book a Session</a>
@@ -244,264 +197,125 @@
   </nav>
 
   <!-- Hero -->
-  <section class="article-hero">
+  <section class="session-hero">
     <div class="container">
       <p class="section-label">What to Expect</p>
-      <h1>Sample Lesson</h1>
-      <p class="subtitle">Here's what a real session with Coach Liam looks like. Every minute has a purpose.</p>
+      <h1>Sample Sessions</h1>
+      <p class="subtitle">Every session is tailored to your player's level and goals. Here's what a typical 40-minute session looks like.</p>
     </div>
   </section>
 
-  <!-- Article -->
-  <div class="article-body">
-    <a href="index.html" class="back-link">← Back to Home</a>
+  <!-- Sessions -->
+  <section class="sessions-container">
+    <div class="container">
+      <a href="index.html" class="back-link">← Back to Home</a>
 
-    <p class="lead">No two players are the same, so no two sessions are exactly alike. But every lesson follows the same philosophy: build skills, build confidence, build a smarter player. Here's a look at what a typical 40-minute session looks like.</p>
+      <div class="session-grid">
+        <!-- Beginner Session -->
+        <div class="session-card beginner">
+          <span class="session-badge">Beginner</span>
+          <h2>Foundation Builder</h2>
+          <p class="duration">40 minutes · Ages 8–11</p>
 
-    <!-- Tabs -->
-    <div class="lesson-tabs">
-      <button class="lesson-tab active" onclick="switchTab('beginner')">
-        🟢 Beginner <span class="tag">Ages 7–10</span>
-      </button>
-      <button class="lesson-tab" onclick="switchTab('intermediate')">
-        🟡 Intermediate <span class="tag">Ages 11–14</span>
-      </button>
+          <div class="session-timeline">
+            <div class="timeline-item">
+              <span class="timeline-time">0–5 min</span>
+              <div class="timeline-content">
+                <h4>Warm-Up & Check-In</h4>
+                <p>Dynamic stretches, ball handling basics, and a quick chat about goals for the day.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">5–15 min</span>
+              <div class="timeline-content">
+                <h4>Ball Handling Fundamentals</h4>
+                <p>Stationary dribbling, crossovers, and control drills. Building comfort with both hands.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">15–25 min</span>
+              <div class="timeline-content">
+                <h4>Shooting Form</h4>
+                <p>BEEF technique (Balance, Eyes, Elbow, Follow-through). Close-range form shooting.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">25–35 min</span>
+              <div class="timeline-content">
+                <h4>1-on-1 Moves</h4>
+                <p>Basic triple threat, jab steps, and simple attack moves. Learning to read the defender.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">35–40 min</span>
+              <div class="timeline-content">
+                <h4>Game & Cool Down</h4>
+                <p>Fun competitive drill or mini-game. Recap what we learned and set homework.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intermediate Session -->
+        <div class="session-card intermediate">
+          <span class="session-badge">Intermediate</span>
+          <h2>Game Ready</h2>
+          <p class="duration">40 minutes · Ages 11–14</p>
+
+          <div class="session-timeline">
+            <div class="timeline-item">
+              <span class="timeline-time">0–5 min</span>
+              <div class="timeline-content">
+                <h4>Dynamic Warm-Up</h4>
+                <p>Ball handling combos on the move. Getting the body and mind game-ready.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">5–15 min</span>
+              <div class="timeline-content">
+                <h4>Advanced Ball Handling</h4>
+                <p>Speed dribbling, combo moves, and handling under pressure. Two-ball drills.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">15–25 min</span>
+              <div class="timeline-content">
+                <h4>Scoring Moves</h4>
+                <p>Pull-up jumpers, floaters, finishing through contact. Reading the defense.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">25–35 min</span>
+              <div class="timeline-content">
+                <h4>Live Situations</h4>
+                <p>1-on-1 from different spots. Decision making: when to shoot, drive, or pass.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">35–40 min</span>
+              <div class="timeline-content">
+                <h4>Competitive Finish</h4>
+                <p>Game-pressure drill with consequences. Mental toughness and clutch moments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="session-note">
+        <p>Sessions are customized based on your player's strengths, weaknesses, and what they want to work on. No two sessions are exactly alike.</p>
+        <a href="index.html#contact" class="btn btn-primary">Book Your First Session</a>
+      </div>
+
     </div>
-
-    <!-- BEGINNER LESSON -->
-    <div class="lesson-content active" id="beginner">
-
-      <div class="lesson-overview">
-        <div class="overview-item">
-          <div class="label">Duration</div>
-          <div class="value">40 min</div>
-        </div>
-        <div class="overview-item">
-          <div class="label">Focus</div>
-          <div class="value">Fundamentals</div>
-        </div>
-        <div class="overview-item">
-          <div class="label">Energy</div>
-          <div class="value">Fun & Active</div>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">0–7 min</span>
-          <h3>Warm-Up & Ball Comfort</h3>
-        </div>
-        <p>We start loose. The goal here is to get your kid comfortable with the ball in their hands — not running laps.</p>
-        <ul>
-          <li>Ball slaps, wraps around the waist, figure-8s through the legs</li>
-          <li>Dribble in place — right hand, left hand, alternating</li>
-          <li>"Simon Says" with the basketball — makes it a game, keeps attention</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> A lot of young players grip the ball too tight or dribble looking straight down. This warm-up fixes that naturally without me having to lecture about it.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">7–17 min</span>
-          <h3>Dribbling Foundations</h3>
-        </div>
-        <p>This is where we build the base. Everything in basketball starts with being able to handle the ball.</p>
-        <ul>
-          <li>Stationary crossovers — slow, controlled, both directions</li>
-          <li>Walking dribble down the court — right hand there, left hand back</li>
-          <li>"Protect the ball" drill — I try to knock it away, they learn to shield</li>
-          <li>Cone weave at walking pace — focus on control, not speed</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> I never tell a beginner to go fast. Speed comes from confidence, and confidence comes from not losing the ball. We build from the ground up.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">17–27 min</span>
-          <h3>Shooting Basics</h3>
-        </div>
-        <p>Form first. Always. We're not chucking threes — we're building a shot that'll last.</p>
-        <ul>
-          <li>BEEF basics — Balance, Eyes, Elbow, Follow-through</li>
-          <li>Close-range form shooting — 3-5 feet from the basket</li>
-          <li>Layup walkthrough — footwork first (left-right-up for the right side)</li>
-          <li>"Make 5" from each spot before moving back</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> Parents sometimes ask why we're shooting so close. Because a bad habit from far away is harder to fix than a good habit from up close. Trust the process.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">27–35 min</span>
-          <h3>Game Situation: 1v1 Lite</h3>
-        </div>
-        <p>Now we put it all together — but low pressure. This is where the fun really kicks in.</p>
-        <ul>
-          <li>1-on-1 from the elbow — I play passive defense at first</li>
-          <li>Read and react — "Can you get past me? Or should you pull up?"</li>
-          <li>Celebrate good decisions, not just made baskets</li>
-          <li>Quick "what would you do?" scenarios between possessions</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> This is my favorite part. You can see the lightbulb go off when a kid makes a read instead of just driving into traffic. That's growth.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">35–40 min</span>
-          <h3>Cool Down & Homework</h3>
-        </div>
-        <p>We finish with free throws and a quick talk about what we worked on.</p>
-        <ul>
-          <li>10 free throws — count the makes, track progress week to week</li>
-          <li>One thing they did great today (positive reinforcement)</li>
-          <li>One thing to practice at home — always simple, always doable</li>
-          <li>"Driveway challenge" — something fun they can do on their own</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> I want every kid to leave feeling like they got better. Because they did. And the homework isn't busy work — it's the stuff that makes next session even better.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- INTERMEDIATE LESSON -->
-    <div class="lesson-content" id="intermediate">
-
-      <div class="lesson-overview">
-        <div class="overview-item">
-          <div class="label">Duration</div>
-          <div class="value">40 min</div>
-        </div>
-        <div class="overview-item">
-          <div class="label">Focus</div>
-          <div class="value">Game IQ</div>
-        </div>
-        <div class="overview-item">
-          <div class="label">Energy</div>
-          <div class="value">High Intensity</div>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">0–7 min</span>
-          <h3>Dynamic Warm-Up & Handle Work</h3>
-        </div>
-        <p>No standing around. We get moving immediately with combo dribble sequences.</p>
-        <ul>
-          <li>Full-court dribble series — crossover, between-the-legs, behind-the-back</li>
-          <li>Two-ball dribbling (stationary, then walking)</li>
-          <li>Reaction drills — I call out moves, they execute on the fly</li>
-          <li>Speed ladder footwork with ball in hand</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> By intermediate, the warm-up IS the workout. These aren't easy drills — they're the same combos you'll see varsity guards use. We just slow them down enough to build real muscle memory.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">7–17 min</span>
-          <h3>Attack Moves & Finishing</h3>
-        </div>
-        <p>Now we're building an offensive toolkit — specific moves for specific situations.</p>
-        <ul>
-          <li>Jab step series — shot fake, drive left, drive right, pull-up</li>
-          <li>Pick-and-roll reads — when to turn the corner, when to pull back</li>
-          <li>Finishing through contact — off-hand layups, reverse finishes</li>
-          <li>Mid-range game — elbow jumpers, baseline pull-ups, floaters</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> I teach every player at least three ways to score from the same spot. If you only have one move, the defense only needs one answer. We make them a problem to guard.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">17–24 min</span>
-          <h3>Defensive Intensity</h3>
-        </div>
-        <p>This is where we separate. Anyone can score in practice. Defense takes discipline.</p>
-        <ul>
-          <li>Closeout technique — sprint to the ball, chop your feet, low stance</li>
-          <li>Slide drills with live ball handler — stay in front, don't reach</li>
-          <li>Help-and-recover rotations — read the pass, move early</li>
-          <li>1-on-1 defensive possessions — three stops to get off the court</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> Defense isn't about being the most athletic. It's about effort and positioning. I've seen smaller players lock down bigger ones because they understood angles. That's what we build here.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">24–33 min</span>
-          <h3>Live Play: Read & React</h3>
-        </div>
-        <p>Full-speed 1-on-1 and situational play. This is where everything we've worked on gets tested.</p>
-        <ul>
-          <li>1-on-1 full court — offense has to score, defense has to get a stop</li>
-          <li>Advantage/disadvantage scenarios — start with the defense behind</li>
-          <li>"Decision drills" — two options on every play, must choose in 2 seconds</li>
-          <li>End-of-game situations — down 2, ball in your hands, 10 seconds left</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> I put players in uncomfortable spots on purpose. Not to stress them out — to show them they can handle it. Confidence doesn't come from easy reps. It comes from doing hard things and succeeding.</p>
-        </div>
-      </div>
-
-      <div class="lesson-block">
-        <div class="block-header">
-          <span class="block-time">33–40 min</span>
-          <h3>Shooting & Film Review</h3>
-        </div>
-        <p>We cool down with shooting and talk through what happened.</p>
-        <ul>
-          <li>Spot shooting — 5 spots, 3 makes from each before rotating</li>
-          <li>Free throws under fatigue — simulate late-game pressure</li>
-          <li>Quick film review on phone — "watch this play, what did you see?"</li>
-          <li>Set goals for the week — specific, measurable, not generic</li>
-        </ul>
-        <div class="coach-note">
-          <p><strong>Coach's note:</strong> The film review is only 2-3 minutes, but it's huge. When a player can watch themselves and identify what they did right or wrong — that's when real improvement starts happening on its own.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="article-cta">
-      <h3>Every session is tailored to your player.</h3>
-      <p>These are sample structures — the real lesson adapts to what your kid needs most. Beginners who are ahead move faster. Intermediate players who need fundamentals get them. No cookie-cutter workouts.</p>
-      <a href="index.html#contact" class="btn btn-primary">Book a Session</a>
-    </div>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Elevate Basketball. Portland, OR.</p>
+      <p>&copy; 2026 Elevate Basketball. Portland, OR.</p>
     </div>
   </footer>
-
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    function switchTab(level) {
-      document.querySelectorAll('.lesson-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.lesson-content').forEach(c => c.classList.remove('active'));
-      document.getElementById(level).classList.add('active');
-      event.target.closest('.lesson-tab').classList.add('active');
-    }
-  </script>
 
 </body>
 </html>
