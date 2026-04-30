@@ -193,7 +193,7 @@
           <a href="sms:3059039200" class="btn btn-big">Text 305-903-9200</a>
           <p class="contact-or">or send a message below</p>
         </div>
-        <form class="contact-form" action="https://formsubmit.co/adam@mish.com" method="POST" onsubmit="trackConversion('contact_form', {page: 'home'});">
+        <form class="contact-form" id="contact-form" action="https://formsubmit.co/adam@mish.com" method="POST">
           <input type="hidden" name="_subject" value="Elevate Basketball — New Inquiry">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://elevate-bb.com/thanks.html">
@@ -248,6 +248,49 @@
     document.querySelectorAll('.skill-card, .pricing-card, .gallery-item, .about-text, .about-image').forEach(el => {
       el.classList.add('fade-in');
       observer.observe(el);
+    });
+
+    // Save form data to Supabase before submitting to FormSubmit
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = this;
+      const formData = new FormData(form);
+      
+      // Save to Supabase first
+      const SUPABASE_URL = 'https://etpiwlcyuvbzerpgwthu.supabase.co';
+      const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0cGl3bGN5dXZiemVycGd3dGh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1ODAzNzQsImV4cCI6MjA5MDE1NjM3NH0.nzBdeurQly7ALn5y1bocjtuwgpstO4aNCEA-hiNGEgs';
+      
+      const sessionId = sessionStorage.getItem('eb_session') || null;
+      const getUtm = (key) => sessionStorage.getItem(key) || null;
+      
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone') || null,
+        message: formData.get('message') || null,
+        session_id: sessionId,
+        utm_source: getUtm('utm_source'),
+        utm_medium: getUtm('utm_medium'),
+        utm_campaign: getUtm('utm_campaign'),
+        utm_content: getUtm('utm_content'),
+        utm_term: getUtm('utm_term')
+      };
+
+      fetch(SUPABASE_URL + '/rest/v1/contact_submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY
+        },
+        body: JSON.stringify(data)
+      }).finally(function() {
+        // Track conversion and submit to FormSubmit regardless of Supabase result
+        if (typeof trackConversion === 'function') {
+          trackConversion('contact_form', {page: 'home'});
+        }
+        form.submit();
+      });
     });
   </script>
 
